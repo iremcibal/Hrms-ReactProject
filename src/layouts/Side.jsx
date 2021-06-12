@@ -6,7 +6,7 @@ export default function Side() {
     return (
         <div>
             <Menu secondary vertical >
-                <Menu.Item
+                <Menu.Item 
                     name='account'
                 //Cv fotoğrafı ve isim-meslek bilgisi
                 />

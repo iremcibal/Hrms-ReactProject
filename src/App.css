@@ -1,0 +1,11 @@
+.ui.card.cv{
+    height:max-content;
+   align-self: flex-end;
+}
+
+.div.center.aligned.header.textbaslik{
+    height: max-content;
+    text-align:center; 
+    font-size:xx-large;
+
+}
