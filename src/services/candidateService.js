@@ -1,17 +1,17 @@
-const { default: axios } = require("axios");
+import axios from "axios";
 
 
 export class CandidateService{
-    getCandidates(){
+    getByCandidateList(){
         return axios.get("http://localhost:8080/candidates/getByCandidateList")
     }
     postCandidates(){
         return axios.post("http://localhost:8080/candidates/addCandidate")
     }
-    deleteCandidates(){
-        return axios.delete("http://localhost:8080/candidates/delete")
+    deleteCandidates(nationaltyNo){
+        return axios.delete("http://localhost:8080/candidates/delete?nationaltyNo="+nationaltyNo)
     }
-    getCandidates(){
-        return axios.put("http://localhost:8080/candidates/cvList")
+    getCurriculumVitaeById(id){
+        return axios.get("http://localhost:8080/candidates/cvList?id="+id)
     }
 }

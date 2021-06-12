@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Menu } from 'semantic-ui-react'
 import { Button, Dropdown,Input,Image } from 'semantic-ui-react'
+import { Link } from "react-router-dom";
 
 export default function Navi() {
     return (
@@ -12,14 +13,15 @@ export default function Navi() {
                     </Menu.Item>
 
                     <Menu.Item name='home'>
-                        Menu
+                        <Link>Menu</Link>
                     </Menu.Item>
+
                     <Menu.Item>
                         <Input className='icon' icon='search' placeholder='Search...' />
                     </Menu.Item>
 
                     <Menu.Menu position='right'>
-                        <Dropdown item text='Sign-in'>
+                        <Dropdown item text='Login'>
                             <Dropdown.Menu>
                                 <Dropdown.Item>Invıdıual </Dropdown.Item>
                                 <Dropdown.Item>Company </Dropdown.Item>
@@ -29,6 +31,7 @@ export default function Navi() {
                         <Menu.Item>
                             <Button primary>Sign Up</Button>
                         </Menu.Item>
+                        
                     </Menu.Menu>
 
                 </Container>
