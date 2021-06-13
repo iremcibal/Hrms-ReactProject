@@ -1,6 +1,7 @@
 import React, { useEffect, useState} from 'react'
 import { Button, Card, Image } from 'semantic-ui-react'
 import { CompanyService } from '../services/companyService'
+import { Link} from "react-router-dom";
 
 
 export default function CompanyList() {
@@ -26,7 +27,7 @@ export default function CompanyList() {
                                 size='mini'
                                 src='/images/avatar/large/steve.jpg'
                             />
-                            <Card.Header>{company.companyName}</Card.Header>
+                            <Card.Header><Link to={`/company/${company.companyName}`}>{company.companyName}</Link></Card.Header>
                             <Card.Meta>Friends of Elliot</Card.Meta>
                             <Card.Description>
                                 <a href={"https://"+company.webSite}>{company.webSite}</a>
