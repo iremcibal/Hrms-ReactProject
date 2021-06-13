@@ -11,8 +11,8 @@ export default class JobPostService{
     postJobPost(){
         return axios.post("http://localhost:8080/jobpost/getByJobPostSave")
     }
-    getJobPostCompanyName(){
-        return axios.get("http://localhost:8080/jobpost/getByCompanyNameList")
+    getJobPostCompanyName(companyName){
+        return axios.get("http://localhost:8080/jobpost/getByCompanyNameList?companyName="+ companyName)
     }
     getJobPostSort(){
         return axios.get("http://localhost:8080/jobpost/getByJobPostSort")

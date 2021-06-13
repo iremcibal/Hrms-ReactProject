@@ -7,6 +7,8 @@ import PositionList from '../pages/PositionList'
 import CurriculumVitaeList from "../pages/CurriculumVitaeList";
 import { Route } from 'react-router-dom'
 import Side from './Side'
+import JobPostSortList from '../pages/JobPostSortList'
+import JobPostCompanyList from '../pages/JobPostCompanyList'
 
 export default function DashBoard() {
     return (
@@ -18,10 +20,12 @@ export default function DashBoard() {
                     </Grid.Column>
                     <Grid.Column width={12}>
                         <Route exact path="/candidate" component={CandidateList} />
-                        <Route path="/jobpost" component={JobPostList}/>
-                        <Route path="/company" component={CompanyList}/>
+                        <Route exact path="/jobpost" component={JobPostList}/>
+                        <Route path="/jobpost/sort" component={JobPostSortList}/>
+                        <Route exact path="/company" component={CompanyList}/>
                         <Route path="/position" component={PositionList}/>
                         <Route path="/candidate/:id" component={CurriculumVitaeList}/>
+                        <Route path="/company/:companyName" component={JobPostCompanyList}/>
 
                     </Grid.Column>
                 </Grid.Row>
