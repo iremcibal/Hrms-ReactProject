@@ -1,15 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Container, Menu } from 'semantic-ui-react'
-import { Button, Dropdown,Input,Image } from 'semantic-ui-react'
+import { Button, Dropdown, Input, Image,Header } from 'semantic-ui-react'
 import { Link } from "react-router-dom";
+import SignedIn from './SignedIn';
+import SignedOut from './SignedOut';
 
 export default function Navi() {
+    
+    const [isAuthenticated, setIsAuthenticated] = useState(true)
+
+    function handleSignOut(){
+        setIsAuthenticated(false)
+    }
+    function handleSignIn(){
+        setIsAuthenticated(true)
+    }
+
     return (
         <div>
             <Menu stackable>
                 <Container>
                     <Menu.Item>
-                        <Image avatar spaced="left" src="/alo.png" />
+                        <div><Image avatar spaced="left" icon="users" src='https://res.cloudinary.com/stanbul/image/upload/v1623720681/d42c91fa05a63047ab0a2109a10786d7_pohb7u.png' /></div>
                     </Menu.Item>
 
                     <Menu.Item name='home'>
@@ -21,17 +33,9 @@ export default function Navi() {
                     </Menu.Item>
 
                     <Menu.Menu position='right'>
-                        <Dropdown item text='Login'>
-                            <Dropdown.Menu>
-                                <Dropdown.Item>Invıdıual </Dropdown.Item>
-                                <Dropdown.Item>Company </Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
+                        {isAuthenticated?<SignedIn signOut={handleSignOut}/>
+                        :<SignedOut signIn={handleSignIn}/>}
 
-                        <Menu.Item>
-                            <Button primary>Sign Up</Button>
-                        </Menu.Item>
-                        
                     </Menu.Menu>
 
                 </Container>

@@ -1,11 +1,84 @@
 .ui.card.cv{
     height:max-content;
-   align-self: flex-end;
+    align-self: flex-end;
+}
+.ui.menu:not(.vertical) .item {
+    padding: 0.65em;
+}
+.profil{
+    margin: auto;
+    padding-top: 0.3em;
+    width: 5em;
+}
+.sidebar{
+    height: auto;
+}
+.text-user{
+    text-align: center;
 }
 
-.div.center.aligned.header.textbaslik{
+/* Candidate Form*/
+.container-form {
+    width: 80%;
+    margin: 70px auto;
+    display: flex;
+    border-radius: 10px;
+    
+    
+}
+.brand-box{
+    flex: 1 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    
+}
+.magic-form {
+    flex: 1 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 40px;
+    font-size: 23px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+/*.....*/  
+
+/*Job Post Formu*/
+.container-form2 {
+    width: 60%;
+    margin: auto;
+    display: flex;
+    border-radius: 10px;
+}
+.ilan{
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+.ui.vertical.menu{
+    margin-top: 1.5em;
+    height: 18rem;
+    width: 18rem;
+}
+.ui.header:last-child{
+    margin: auto;
+}
+/*Login ekranı*/
+.ui.container.login{
+    margin: 10%;
+}
+
+button.ui.big.button {
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+/* .div.center.aligned.header.textbaslik{
     height: max-content;
     text-align:center; 
     font-size:xx-large;
 
-}
+} */
