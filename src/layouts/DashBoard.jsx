@@ -9,23 +9,33 @@ import { Route } from 'react-router-dom'
 import Side from './Side'
 import JobPostSortList from '../pages/JobPostSortList'
 import JobPostCompanyList from '../pages/JobPostCompanyList'
+import CandidateFormSignUp from '../pages/CandidateFormSignUp'
+import FirstPage from '../pages/FirstPage'
+import Navi from './Navi'
+import CompanyFormSignUp from '../pages/CompanyFormSignUp'
 
 export default function DashBoard() {
     return (
         <div>
             <Grid>
                 <Grid.Row>
-                    <Grid.Column width={2}>
-                        <Side />
+                    <Route exact path="/" component={FirstPage}/> 
+                    <Route exact path="/individual" component={CandidateFormSignUp}/>
+                    <Route exact path="/company" component={CompanyFormSignUp}/>
+                    <Route path="/nv" component={Navi} />
+                    <Grid.Column width={4}>
+                        <Route path="/nv/sd" component={Side}/>
                     </Grid.Column>
                     <Grid.Column width={12}>
-                        <Route exact path="/candidate" component={CandidateList} />
-                        <Route exact path="/jobpost" component={JobPostList}/>
-                        <Route path="/jobpost/sort" component={JobPostSortList}/>
-                        <Route exact path="/company" component={CompanyList}/>
-                        <Route path="/position" component={PositionList}/>
-                        <Route path="/candidate/:id" component={CurriculumVitaeList}/>
-                        <Route path="/company/:companyName" component={JobPostCompanyList}/>
+
+                        <Route exact path="/nv/sd/candidate" component={CandidateList} />
+                        <Route exact path="/nv/sd/jobpost" component={JobPostList}/>
+                        <Route exact path="/nv/sd/jobpost/sort" component={JobPostSortList}/>
+                        <Route exact path="/nv/sd/company" component={CompanyList}/>
+                        <Route exact path="/nv/sd/position" component={PositionList}/>
+                        <Route exact path="/nv/sd/candidate/:id" component={CurriculumVitaeList}/>
+                        <Route exact path="/nv/sd/company/:companyName" component={JobPostCompanyList}/>
+                        
 
                     </Grid.Column>
                 </Grid.Row>

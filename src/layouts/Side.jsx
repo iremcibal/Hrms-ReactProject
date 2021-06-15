@@ -1,27 +1,28 @@
 import React from 'react'
-import { Dropdown, Menu } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
+import { Card, Header ,Image} from 'semantic-ui-react'
 
 
 export default function Side() {
+
     return (
-        <div>
-            <Menu secondary vertical >
-                <Menu.Item 
-                    name='account'
-                //Cv fotoğrafı ve isim-meslek bilgisi
+        <div className="sidebar">
+            <Menu pointing vertical>
+                <Card.Header as='h2'>
+                    <div className="profil">
+                        <Image circular src='https://www.pinkvilla.com/files/styles/amp_metadata_content_image_min_696px_wide/public/rachel_green.jpg?itok=fJez0tId' />
+                    </div> 
+                    <div className="text-user"><Header.Content >Kullanıcı ismi</Header.Content></div>
+                    
+                </Card.Header>
+ 
+                <Menu.Item
+                    name='messages'
                 />
                 <Menu.Item
-                    name='settings'
-                //Bilgileri güncellemeye yönlendirme
+                    name='friends'
                 />
-                <Dropdown item text='Job Posting'>
-                    <Dropdown.Menu>
-                        <Dropdown.Header>Text Size</Dropdown.Header>
-                        <Dropdown.Item>Small</Dropdown.Item>
-                        <Dropdown.Item>Medium</Dropdown.Item>
-                        <Dropdown.Item>Large</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
+
             </Menu>
         </div>
     )

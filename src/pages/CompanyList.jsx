@@ -27,7 +27,7 @@ export default function CompanyList() {
                                 size='mini'
                                 src='/images/avatar/large/steve.jpg'
                             />
-                            <Card.Header><Link to={`/company/${company.companyName}`}>{company.companyName}</Link></Card.Header>
+                            <Card.Header><Link to={`/nv/sd/company/${company.companyName}`}>{company.companyName}</Link></Card.Header>
                             <Card.Meta>Friends of Elliot</Card.Meta>
                             <Card.Description>
                                 <a href={"https://"+company.webSite}>{company.webSite}</a>

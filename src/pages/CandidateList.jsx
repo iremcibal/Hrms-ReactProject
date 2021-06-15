@@ -22,7 +22,7 @@ export default function CandidateList() {
                                 size='mini'
                                 src='/images/avatar/large/steve.jpg'
                             />
-                            <Card.Header><Link to={`/candidate/${candidate.id}`}>
+                            <Card.Header><Link to={`/nv/sd/candidate/${candidate.id}`}>
                                 {candidate.name}</Link></Card.Header>
                             <Card.Meta>Friends of Elliot</Card.Meta>
                             <Card.Description>
