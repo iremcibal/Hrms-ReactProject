@@ -48,7 +48,6 @@
 
 /*Job Post Formu*/
 .container-form2 {
-    width: 60%;
     margin: auto;
     display: flex;
     border-radius: 10px;
@@ -65,16 +64,22 @@
 }
 .ui.header:last-child{
     margin: auto;
+    display: flex;
+    margin-top: 0.3em;
 }
 /*Login ekranı*/
 .ui.container.login{
     margin: 10%;
 }
-
+/*Navi*/
 button.ui.big.button {
     padding: 0.5em;
     margin-bottom: 0.5em;
 }
+.style-out{
+    display: contents;
+}
+
 
 /* .div.center.aligned.header.textbaslik{
     height: max-content;
@@ -82,3 +87,16 @@ button.ui.big.button {
     font-size:xx-large;
 
 } */
+
+/* sp */
+img.ui.image.sp {
+    display: block;
+    margin: auto;
+}
+button.ui.button.sp {
+    width: 50%;
+    /* margin-right: auto; */
+    display: block;
+    margin: auto;
+    margin-top: 5em;
+}

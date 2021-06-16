@@ -4,11 +4,15 @@ import { Button, Form, } from 'semantic-ui-react'
 import JobPostService from '../services/jobPostService'
 import { CityService } from '../services/cityService'
 import { CompanyService } from '../services/companyService'
+import { JobTypeService } from '../services/jobTypeService'
+import { JobTimeService } from '../services/jobTimeService'
 
 export default function JobPost() {
     const [jobPost, setJobPost] = useState([])
     const [company, setCompany] = useState([])
     const [city, setCity] = useState([])
+    const [jobType, setJobType] = useState([])
+    const [jobTime, setJobTime] = useState([])
 
     useEffect(() => {
         let companyService = new CompanyService()
@@ -33,6 +37,22 @@ export default function JobPost() {
             console.log(result)
         })
     }, [])
+
+    useEffect(()=> {
+        let jobTypeService = new JobTypeService()
+        jobTypeService.getJobTypeList().then(result =>{
+            setJobType(result.data.data);
+            console.log(result)
+        })
+    },[])
+
+    useEffect(()=> {
+        let jobTimeService = new JobTimeService()
+        jobTimeService.getJobTimeList().then(result =>{
+            setJobTime(result.data.data);
+            console.log(result)
+        })
+    },[])
 
     return (
         <div className="container-form2">
@@ -122,12 +142,12 @@ export default function JobPost() {
                             <select
                                 id="working"
                             >
-                                <option value="" placeholder="Working Environment" />
-
-                                <option value="office" label='Office' />
-                                <option value="home" label='Home Office' />
-
-
+                                <option value="Working Enviroment"  />
+                                {
+                                    jobType.map((jobType)=>(
+                                         <option value="jobType" label={jobType?.typeName} />
+                                    ))
+                                }
                             </select>
                         </Form.Input>
 
@@ -136,18 +156,13 @@ export default function JobPost() {
                                 id="working-time"
                             >
                                 <option value="" placeholder="Working Time" />
-                                <option value="office" label='Tam Zamanlı' />
-                                <option value="home" label='Yarı Zamanlı' />
-                                <option value="home" label='Kısa Dönem Stajyer' />
-                                <option value="home" label='Uzun Dönem Stajyer' />
-
-
+                                {
+                                    jobTime.map((jobTime)=>(
+                                         <option value="office" label={jobTime?.timeName} />
+                                    ))
+                                }
                             </select>
                         </Form.Input>
-
-
-
-
 
                         <Form.Checkbox
                             label='Active'

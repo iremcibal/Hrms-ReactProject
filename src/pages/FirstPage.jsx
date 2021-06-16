@@ -4,7 +4,7 @@ import CandidateFormSignUp from './CandidateFormSignUp'
 import { Link} from "react-router-dom";
 
 
-export default function FirstPage() {
+export default function FirstPage({signIn}) {
     return (
         <Container className="login">
             <div >
@@ -25,7 +25,7 @@ export default function FirstPage() {
                                     type='password'
                                 />
 
-                                <Button content='Login' primary />
+                                <Link to={`/nv/sd`}><Button onClick={signIn} content='Login' primary></Button> </Link>
                             </Form>
                         </Grid.Column>
 
@@ -39,6 +39,7 @@ export default function FirstPage() {
 
                     <Divider vertical>Or</Divider>
                 </Segment>
+
             </div>
         </Container>
 

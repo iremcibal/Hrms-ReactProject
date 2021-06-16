@@ -13,6 +13,8 @@ import CandidateFormSignUp from '../pages/CandidateFormSignUp'
 import FirstPage from '../pages/FirstPage'
 import Navi from './Navi'
 import CompanyFormSignUp from '../pages/CompanyFormSignUp'
+import SecondPage from '../pages/SecondPage'
+import JobPost from '../pages/JobPost'
 
 export default function DashBoard() {
     return (
@@ -23,6 +25,7 @@ export default function DashBoard() {
                     <Route exact path="/individual" component={CandidateFormSignUp}/>
                     <Route exact path="/company" component={CompanyFormSignUp}/>
                     <Route path="/nv" component={Navi} />
+                    <Route path="/nv/sp" component={SecondPage}/>
                     <Grid.Column width={4}>
                         <Route path="/nv/sd" component={Side}/>
                     </Grid.Column>
@@ -35,6 +38,7 @@ export default function DashBoard() {
                         <Route exact path="/nv/sd/position" component={PositionList}/>
                         <Route exact path="/nv/sd/candidate/:id" component={CurriculumVitaeList}/>
                         <Route exact path="/nv/sd/company/:companyName" component={JobPostCompanyList}/>
+                        <Route exact path="/nv/sd/newjp" component={JobPost}/>
                         
 
                     </Grid.Column>
