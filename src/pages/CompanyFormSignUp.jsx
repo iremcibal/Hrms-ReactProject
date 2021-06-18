@@ -1,63 +1,127 @@
 import React from 'react'
-import { Formik } from 'formik'
-import { Form, Message, Button,Image } from 'semantic-ui-react'
+import { Formik, yupToFormErrors } from 'formik'
+import { Form, Message, Button, Image } from 'semantic-ui-react'
+import * as Yup from 'yup';
+
 
 export default function CompanyFormSignUp() {
     return (
         <div className="container-form">
             <div className="magic-form">
-                <Formik>
-                    <Form>
-                        <Form.Input
-                            //error={{ content: 'Please enter your first name', pointing: 'below' }}
-                            fluid
-                            label='Company Name'
-                            placeholder='Company'
-                            id='form-input-first-name'
-                        />
-                        <Form.Input
-                            fluid
-                            label='Web Site'
-                            placeholder='Web site'
-                        />
-                        <Form.Input label='Email' placeholder='..@mail.com' />
-                        <Message
-                            warning
-                            header='Could you check something!'
-                            list={[
-                                'That e-mail has been subscribed, but you have not yet clicked the verification link in your e-mail.',
-                            ]}
-                        />
-                        <Form.Input
-                            fluid
-                            label='Telephone'
-                            placeholder='Telephone'
-                        />
-                        <Form.Group widths='equal'>
+                <Formik
+                    initialValues={{
+                        company: '',
+                        webSite: '',
+                        email: '',
+                        telephone: '',
+                        password: '',
+                        repeat_password: '',
+                    }}
+                    validationSchema={
+                        Yup.object({
+                            company: Yup.string()
+                                .required("Lütfen bilgilerinizi eksiksiz giriniz."),
+                            webSite: Yup.string()
+                                .required("Lütfen bilgilerinizi eksiksiz giriniz."),
+                            email: Yup.string()
+                                .email("Geçerli bir email giriniz.")
+                                .required("Lütfen bilgilerinizi eksiksiz giriniz."),
+                            telephone: Yup.string()
+                                .min(11, "Lütfen telefon numaranızı giriniz.")
+                                .required("Lütfen bilgilerinizi eksiksiz giriniz."),
+                            password: Yup.string()
+                                .required("Lütfen bilgilerinizi eksiksiz giriniz."),
+                            repeat_password: Yup.string()
+                                .oneOf([Yup.ref("password")], "Şifreleriniz eşleşmiyor")
+                                .required("Lütfen bilgilerinizi eksiksiz giriniz."),
+                        })
+
+                    }
+
+                >
+                    {({
+                        values,
+                        touched,
+                        errors,
+                        dirty,
+                        isSubmitting,
+                        handleSubmit,
+                        handleChange,
+                    }) => (
+                        <Form onSubmit={handleSubmit}>
+                            <label htmlFor="company">Şirket İsmi</label>
                             <Form.Input
-
-                                label='Password'
-                                type='password'
-                                placeholder='Şifre'
+                                fluid
+                                id='company'
+                                type="text"
+                                value={values.company}
+                                onChange={handleChange}
                             />
+                            {errors.company && touched.company && (
+                                <div className="input-feedback">{errors.company}</div>
+                            )}
 
+                            <label htmlFor="webSite">Web Site</label>
                             <Form.Input
-
-                                label='Repeat Password'
-                                type='password'
-                                placeholder='Şifre Tekrarı'
+                                fluid
+                                id="webSite"
+                                type="text"
+                                value={values.webSite}
+                                onChange={handleChange}
                             />
-                        </Form.Group>
+                            {errors.webSite && touched.webSite && (
+                                <div className="input-feedback">{errors.webSite}</div>
+                            )}
 
+                            <label htmlFor="email">Email</label>
+                            <Form.Input
+                                id="email"
+                                type="text"
+                                value={values.email}
+                                onChange={handleChange}
 
-                        <Form.Checkbox
-                            label='I agree to the Terms and Conditions'
-                        />
+                            />
+                            {errors.email && touched.email && (
+                                <div className="input-feedback">{errors.email}</div>
+                            )}
+                            <label htmlFor="telephone">Telefon</label>
+                            <Form.Input
+                                fluid
+                                id="telephone"
+                                type="text"
+                                value={values.telephone}
+                                onChange={handleChange}
+                            />
+                            {errors.telephone && touched.telephone && (
+                                <div className="input-feedback">{errors.telephone}</div>
+                            )}
 
-                        <Button>Submit</Button>
+                            <label htmlFor="password">Şifre</label>
+                            <Form.Input
+                                id="password"
+                                type='password'
+                                value={values.password}
+                                onChange={handleChange}
+                            />
+                            {errors.password && touched.password && (
+                                <div className="input-feedback">{errors.password}</div>
+                            )}
+                            <label htmlFor="repeat_password">Şifre Tekrarı</label>
+                            <Form.Input
+                                id="repeat_password"
+                                type='password'
+                                value={values.repeat_password}
+                                onChange={handleChange}
+                               
+                            />
+                            {errors.repeat_password && touched.repeat_password && (
+                                <div className="input-feedback">{errors.repeat_password}</div>
+                            )}
 
-                    </Form>
+                            <Button disabled={!dirty || isSubmitting}>Kayıt Ol</Button>
 
+                        </Form>
+                    )}
                 </Formik>
             </div>
             <div className="brand-box">
