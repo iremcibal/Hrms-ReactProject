@@ -18,7 +18,7 @@ export default function CompanyList() {
     return (
         <div>
 
-            <Card.Group>
+            <Card.Group className="company">
                 {companys.map((company) => (
                     <Card fluid key="company.id">
                         <Card.Content>
@@ -27,19 +27,21 @@ export default function CompanyList() {
                                 size='mini'
                                 src='/images/avatar/large/steve.jpg'
                             />
-                            <Card.Header><Link to={`/nv/sd/company/${company.companyName}`}>{company.companyName}</Link></Card.Header>
-                            <Card.Meta>Friends of Elliot</Card.Meta>
-                            <Card.Description>
-                                <a href={"https://"+company.webSite}>{company.webSite}</a>
+                            <Card.Header textAlign="center">{company.companyName}</Card.Header>
+                            <Card.Meta></Card.Meta>
+                            <Card.Description>Sitemiz :
+                                <a href={"https://"+company.webSite}> {company.webSite}</a>
                             </Card.Description>
                         </Card.Content>
                         <Card.Content extra>
                             <div className='ui two buttons'>
+                            <Link to={`/navi/company/${company.companyName}`}>
                                 <Button basic color='green'>
-                                    Approve
+                                    İş İlanlarını Görüntüle
                                 </Button>
+                            </Link>
                                 <Button basic color='red'>
-                                    Decline
+                                    Sil
                                 </Button>
                             </div>
                         </Card.Content>
