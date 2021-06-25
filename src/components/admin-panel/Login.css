@@ -1,0 +1,16 @@
+/*Ortaya almak için*/
+#loginform {
+    border: 1px solid black;
+    border-color: black;
+    background: rgb(white, white, white,50%);
+    padding: 30px 7em 38px;
+    position: absolute;
+    align-items: center;
+    left: 27em;
+    margin-top: 15em;
+    
+}
+.login-panel{
+    width: 320px;
+    margin: auto;
+}
