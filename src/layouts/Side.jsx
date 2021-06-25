@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import { Menu } from 'semantic-ui-react'
 import { Card, Header ,Image} from 'semantic-ui-react'
 
@@ -20,8 +21,12 @@ export default function Side() {
                     name='messages'
                 />
                 <Menu.Item
-                    name='friends'
+                    name='messages'
                 />
+                
+                <Menu.Item as={NavLink} to={`/navi/candidate`}>Adaylar</Menu.Item>
+                <Menu.Item as={NavLink} to={`/navi/company`}>Şirketler</Menu.Item>
+                <Menu.Item as={NavLink} to={`/navi/jobpost`}>İş İlanları</Menu.Item>
 
             </Menu>
         </div>

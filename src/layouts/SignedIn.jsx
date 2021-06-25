@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button, Dropdown, Input, Image,Header } from 'semantic-ui-react'
-import { Link, NavLink} from "react-router-dom";
+import { Dropdown, Image,Header } from 'semantic-ui-react'
+import {  NavLink} from "react-router-dom";
 
 
 export default function SignedIn({signOut}) {
@@ -11,10 +11,11 @@ export default function SignedIn({signOut}) {
                 <Dropdown item text='Kullanıcı'> 
                     <Dropdown.Menu>
                         <Dropdown.Item>Bilgilerimi Güncelle</Dropdown.Item>
-                        <Dropdown.Item as={NavLink} to={`/nv/sp`} onClick={signOut}>Çıkış Yap</Dropdown.Item>
+                        <Dropdown.Item as={NavLink} to={`/`} onClick={signOut}>Çıkış Yap</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             </Header>
         </div>
     )
+    
 }

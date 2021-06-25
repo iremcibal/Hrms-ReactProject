@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button, Divider, Form, Grid, Segment,Container } from 'semantic-ui-react'
-import CandidateFormSignUp from './CandidateFormSignUp'
 import { Link} from "react-router-dom";
 
 
@@ -25,7 +24,7 @@ export default function FirstPage({signIn}) {
                                     type='password'
                                 />
 
-                                <Link to={`/nv/sd`}><Button onClick={signIn} content='Login' primary></Button> </Link>
+                                <Link to={`/navi`}><Button onClick={signIn} content='Login' primary></Button> </Link>
                             </Form>
                         </Grid.Column>
 

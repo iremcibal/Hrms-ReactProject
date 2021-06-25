@@ -8,4 +8,8 @@ export class CvDetailService{
     postDetail(){
         return axios.post("http://localhost:8080/cv/add")
     }
+
+    getDetailCandidateId(candidatesId){
+        return axios.get("http://localhost:8080/cv/candidatesIdList?candidatesId="+ candidatesId)
+    }
 }

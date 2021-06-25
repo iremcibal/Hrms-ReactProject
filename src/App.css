@@ -2,6 +2,22 @@
     height:max-content;
     align-self: flex-end;
 }
+.ui.fluid.card.candidate-cv{
+    margin-top: 1.5em;
+    padding: 3em;
+}
+.ui.red.card{
+    width: 10rem;
+}
+.ui.cards.candidate{
+    margin-top: 0.8em;
+    width: 98%;
+}
+.ui.cards.company{
+    margin-top: 0.8em;
+    width: 98%;
+}
+
 .ui.menu:not(.vertical) .item {
     padding: 0.65em;
 }
@@ -57,6 +73,13 @@
     margin: auto;
     display: flex;
     border-radius: 10px;
+    text:white;
+}
+.ui.form .field>label{
+    color:white;
+}
+.ui.checkbox label, .ui.checkbox+label {
+    color: white;
 }
 .ilan{
     text-align: center;
@@ -73,10 +96,12 @@
     display: flex;
     margin-top: 0.3em;
 }
+
 /*Login ekranı*/
 .ui.container.login{
     margin: 10%;
 }
+
 /*Navi*/
 button.ui.big.button {
     padding: 0.5em;
