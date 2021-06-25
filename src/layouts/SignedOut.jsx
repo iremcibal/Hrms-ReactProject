@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button, Dropdown, Input, Image, Header } from 'semantic-ui-react'
-import { Container, Menu } from 'semantic-ui-react'
+import { Button, Dropdown } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
 import { Link } from "react-router-dom";
 
 

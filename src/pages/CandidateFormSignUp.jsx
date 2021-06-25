@@ -1,9 +1,15 @@
 import { Formik } from 'formik'
-import { Form, Message, Button, Image } from 'semantic-ui-react'
+import { Form, Button, Image } from 'semantic-ui-react'
 import * as Yup from 'yup';
 import React from 'react'
+import { AuthService } from '../services/authService';
 
 export default function CandidateFormSignUp() {
+
+   // let candidateService = new CandidateService()
+    let authService = new AuthService();
+
+
     return (
         <div className="container-form">
             <div className="brand-box">
@@ -14,19 +20,17 @@ export default function CandidateFormSignUp() {
             <div className="magic-form">
                 <Formik
                     initialValues={{
-                        firstName: '',
+                        name: '',
                         lastName: '',
                         email: '',
                         nationaltyNo: '',
-                        date: '',
+                        birthDate: '',
                         password: '',
-                        repeat_password: '',
-
-
+                        repeat_password:'',
                     }}
                     validationSchema={
                         Yup.object({
-                            firstName: Yup.string()
+                            name: Yup.string()
                                 //.min(8,"minimum sekiz karakter")
                                 .required('Lütfen bilgilerinizi eksiksiz giriniz.'),
                             lastName: Yup.string()
@@ -35,9 +39,9 @@ export default function CandidateFormSignUp() {
                                 .email("Geçerli bir email giriniz.")
                                 .required('Lütfen bilgilerinizi eksiksiz giriniz.'),
                             nationaltyNo: Yup.string()
-                                .min(11,"Lütfen TC kimliğinizi yazınız.")
+                                .min(11, "Lütfen TC kimliğinizi yazınız.")
                                 .required('Lütfen bilgilerinizi eksiksiz giriniz.'),
-                            date: Yup.date()
+                            birthDate: Yup.date()
                                 .required('Lütfen bilgilerinizi eksiksiz giriniz.'),
                             password: Yup.string()
                                 .required('Lütfen bilgilerinizi eksiksiz giriniz.'),
@@ -46,6 +50,24 @@ export default function CandidateFormSignUp() {
                                 .required('Lütfen bilgilerinizi eksiksiz giriniz.')
 
                         })}
+                    onSubmit={(values) => {
+                        let newcandidate = {
+                            name: values.name,
+                            lastName: values.lastName,
+                            email: values.email,
+                            nationaltyNo: values.nationaltyNo,
+                            birthDate: values.birthDate,
+                            password: values.password,
+                            repeat_password: values.repeat_password,
+                        }
+                        /* await new Promise((r) => setTimeout(r, 500));
+                        alert(JSON.stringify(values, null, 2)); */
+                        console.log(newcandidate)
+                        authService.addRegisterCandidate(newcandidate);
+
+                    }}
+
+
 
                 >
                     {({
@@ -59,17 +81,17 @@ export default function CandidateFormSignUp() {
 
                     }) => (
                         <Form onSubmit={handleSubmit}>
-                            <label htmlFor="firstName">İsim</label>
+                            <label htmlFor="name">İsim</label>
                             <Form.Input
                                 fluid
-                                id='firstName'
+                                id='name'
                                 type="text"
-                                value={values.firstName}
+                                value={values.name}
                                 onChange={handleChange}
 
                             />
-                            {errors.firstName && touched.firstName && (
-                                <div className="input-feedback">{errors.firstName}</div>
+                            {errors.name && touched.name && (
+                                <div className="input-feedback">{errors.name}</div>
                             )}
 
                             <label htmlFor="lastName">Soy İsim</label>
@@ -108,15 +130,15 @@ export default function CandidateFormSignUp() {
                                 <div className="input-feedback">{errors.nationaltyNo}</div>
                             )}
 
-                            <label htmlFor="date">Doğum Tarihi</label>
+                            <label htmlFor="birthDate">Doğum Tarihi</label>
                             <Form.Input
                                 fluid
-                                id="date"
-                                value={values.date}
+                                id="birthDate"
+                                value={values.birthDate}
                                 onChange={handleChange}
                             />
-                            {errors.date && touched.date && (
-                                <div className="input-feedback">{errors.date}</div>
+                            {errors.birthDate && touched.birthdate && (
+                                <div className="input-feedback">{errors.birthDate}</div>
                             )}
                             <label htmlFor="password">Şifre</label>
                             <Form.Input
@@ -145,10 +167,13 @@ export default function CandidateFormSignUp() {
                             label='I agree to the Terms and Conditions'
                         /> */}
 
-                            <Button disabled={!dirty || isSubmitting}>Kayıt Ol</Button>
+                            <Button disabled={!dirty || isSubmitting}
+                            type="submit"
+                            >Kayıt Ol</Button>
 
                         </Form>
                     )}
+
 
 
                 </Formik>
