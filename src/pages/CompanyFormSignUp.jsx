@@ -2,31 +2,36 @@ import React from 'react'
 import { Formik } from 'formik'
 import { Form, Button, Image } from 'semantic-ui-react'
 import * as Yup from 'yup';
+import { AuthService } from '../services/authService';
+import UserAddTextInput from '../utilities/customFormControls/UserAddTextInput';
 
 
 export default function CompanyFormSignUp() {
+
+    let authService = new AuthService();
+
     return (
         <div className="container-form">
             <div className="magic-form">
                 <Formik
                     initialValues={{
-                        company: '',
+                        companyName: '',
                         webSite: '',
                         email: '',
-                        telephone: '',
+                        telePhone: '',
                         password: '',
                         repeat_password: '',
                     }}
                     validationSchema={
                         Yup.object({
-                            company: Yup.string()
+                            companyName: Yup.string()
                                 .required("Lütfen bilgilerinizi eksiksiz giriniz."),
                             webSite: Yup.string()
                                 .required("Lütfen bilgilerinizi eksiksiz giriniz."),
                             email: Yup.string()
                                 .email("Geçerli bir email giriniz.")
                                 .required("Lütfen bilgilerinizi eksiksiz giriniz."),
-                            telephone: Yup.string()
+                            telePhone: Yup.string()
                                 .min(11, "Lütfen telefon numaranızı giriniz.")
                                 .required("Lütfen bilgilerinizi eksiksiz giriniz."),
                             password: Yup.string()
@@ -37,86 +42,44 @@ export default function CompanyFormSignUp() {
                         })
 
                     }
+                    onSubmit={(values) =>{
+                        let newcompany = {
+                            companyName: values.companyName,
+                            webSite: values.webSite,
+                            email: values.email,
+                            telePhone:values.telePhone,
+                            password: values.password,
+
+                        }
+                        console.log(newcompany)
+                        authService.addRegisterCompany(newcompany);
+                    }}
 
                 >
                     {({
-                        values,
-                        touched,
-                        errors,
+                       
                         dirty,
                         isSubmitting,
                         handleSubmit,
-                        handleChange,
                     }) => (
                         <Form onSubmit={handleSubmit}>
-                            <label htmlFor="company">Şirket İsmi</label>
-                            <Form.Input
-                                fluid
-                                id='company'
-                                type="text"
-                                value={values.company}
-                                onChange={handleChange}
-                            />
-                            {errors.company && touched.company && (
-                                <div className="input-feedback">{errors.company}</div>
-                            )}
+                            <label>Şirket İsmi</label>
+                            <UserAddTextInput name="companyName"/>
 
-                            <label htmlFor="webSite">Web Site</label>
-                            <Form.Input
-                                fluid
-                                id="webSite"
-                                type="text"
-                                value={values.webSite}
-                                onChange={handleChange}
-                            />
-                            {errors.webSite && touched.webSite && (
-                                <div className="input-feedback">{errors.webSite}</div>
-                            )}
+                            <label>Web Site</label>
+                            <UserAddTextInput name="webSite"/>
 
-                            <label htmlFor="email">Email</label>
-                            <Form.Input
-                                id="email"
-                                type="text"
-                                value={values.email}
-                                onChange={handleChange}
+                            <label >Email</label>
+                            <UserAddTextInput name="email"/>
 
-                            />
-                            {errors.email && touched.email && (
-                                <div className="input-feedback">{errors.email}</div>
-                            )}
-                            <label htmlFor="telephone">Telefon</label>
-                            <Form.Input
-                                fluid
-                                id="telephone"
-                                type="text"
-                                value={values.telephone}
-                                onChange={handleChange}
-                            />
-                            {errors.telephone && touched.telephone && (
-                                <div className="input-feedback">{errors.telephone}</div>
-                            )}
+                            <label >Telefon</label>
+                            <UserAddTextInput name="telePhone"/>
 
-                            <label htmlFor="password">Şifre</label>
-                            <Form.Input
-                                id="password"
-                                type='password'
-                                value={values.password}
-                                onChange={handleChange}
-                            />
-                            {errors.password && touched.password && (
-                                <div className="input-feedback">{errors.password}</div>
-                            )}
-                            <label htmlFor="repeat_password">Şifre Tekrarı</label>
-                            <Form.Input
-                                id="repeat_password"
-                                type='password'
-                                value={values.repeat_password}
-                                onChange={handleChange}
-                               
-                            />
-                            {errors.repeat_password && touched.repeat_password && (
-                                <div className="input-feedback">{errors.repeat_password}</div>
-                            )}
+                            <label >Şifre</label>
+                            <UserAddTextInput name="password" type="password"/>
+
+                            <label >Şifre Tekrarı</label>
+                            <UserAddTextInput name="repeat_password" type="password"/>
 
                             <Button disabled={!dirty || isSubmitting}>Kayıt Ol</Button>
 
