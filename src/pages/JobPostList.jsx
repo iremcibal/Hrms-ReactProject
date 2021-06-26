@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Checkbox, Table } from 'semantic-ui-react'
 import JobPostService from '../services/jobPostService';
+import { Card, Divider,Grid ,Button} from 'semantic-ui-react'
+
 
 export default function JobPostList() {
     const [jobPosts, setjobPosts] = useState([ ])
@@ -13,45 +14,54 @@ export default function JobPostList() {
 
     return (
         <div>
-            <Table celled compact definition>
-                <Table.Header fullWidth>
-                    <Table.Row>
-                        <Table.HeaderCell />
-                        <Table.HeaderCell>Company</Table.HeaderCell>
-                        <Table.HeaderCell>Position Name</Table.HeaderCell>
-                        <Table.HeaderCell>City</Table.HeaderCell>
-                        <Table.HeaderCell>E-mail Address</Table.HeaderCell>
-                        <Table.HeaderCell>Created Date</Table.HeaderCell>
-                        <Table.HeaderCell>Dead Line</Table.HeaderCell>
-                        <Table.HeaderCell>Maximum Salary</Table.HeaderCell>
-                        <Table.HeaderCell>Minimum Salary</Table.HeaderCell>
-                        <Table.HeaderCell>Position Quota</Table.HeaderCell>
-                        <Table.HeaderCell>Position Title</Table.HeaderCell>
-                    </Table.Row>
-                </Table.Header>
+            <Card fluid className="candidate-cv">
+                <Card.Group>
+                    {
+                        jobPosts.map((jobPost) => (
+                            <Card fluid>
+                                <Card.Content>
+                                    <Card.Header textAlign="center"><h2>{jobPost.company?.companyName}</h2></Card.Header>
+                                </Card.Content>
 
-                <Table.Body>
-                    {jobPosts.map((jobPost) => (
-                        <Table.Row key={jobPosts.id}>
-                            <Table.Cell collapsing>
-                                <Checkbox slider />
-                            </Table.Cell>
-                            <Table.Cell>{jobPost.company.companyName}</Table.Cell>
-                            <Table.Cell>{jobPost.positions.positionName}</Table.Cell>
-                            <Table.Cell>{jobPost.city.cityName}</Table.Cell>
-                            <Table.Cell>{jobPost.company.email}</Table.Cell>
-                            <Table.Cell>{jobPost.createdAt}</Table.Cell>
-                            <Table.Cell>{jobPost.deadLine}</Table.Cell>
-                            <Table.Cell>{jobPost.maxSalary}</Table.Cell>
-                            <Table.Cell>{jobPost.minSalary}</Table.Cell>
-                            <Table.Cell>{jobPost.positionQuota}</Table.Cell>
-                            <Table.Cell>{jobPost.positionTitle}</Table.Cell>
+                                <Card.Content >
+                                    <Grid columns={2} relaxed="very">
+                                        <Grid.Column>
+                                            <Card.Header><strong>Pozisyon</strong></Card.Header>
+                                            <Card.Description >{jobPost.positions?.positionName}</Card.Description> <br />
+                                            <Card.Header><strong>Şehir</strong></Card.Header>
+                                            <Card.Description>{jobPost.city?.cityName}</Card.Description><br />
+                                            <Card.Header ><strong>Email</strong></Card.Header>
+                                            <Card.Description >{jobPost.company?.email}</Card.Description><br />
+                                            <Card.Header ><strong>Yayınlanma Tarihi</strong></Card.Header>
+                                            <Card.Description >{jobPost.createdAt}</Card.Description>
+                                        </Grid.Column>
 
-                        </Table.Row>
 
-                    ))}
-                </Table.Body>
-            </Table>
+                                        <Grid.Column>
+                                            <Card.Header > <strong>Son Başvuru Günü</strong></Card.Header>
+                                            <Card.Description >{jobPost.deadLine}</Card.Description> <br/>
+                                            <Card.Header ><strong>Maaş Bilgisi</strong></Card.Header>
+                                            <Card.Description>{jobPost.maxSalary} / {jobPost.minSalary}</Card.Description><br/>
+                                            <Card.Header><strong>Pozisyon Kotası</strong></Card.Header>
+                                            <Card.Description >{jobPost.positionQuota}</Card.Description><br/>
+                                            <Card.Header ><strong>Ek Bilgi</strong></Card.Header>
+                                            <Card.Description >{jobPost.positionTitle}</Card.Description> <br/>
+
+                                            <Button basic color="blue">Başvur </Button>
+                                        </Grid.Column>
+
+                                        
+
+                                    </Grid>
+                                        <Divider vertical />
+                                </Card.Content>
+
+                            </Card>
+
+                        ))
+                    }
+                </Card.Group>
+            </Card>
         </div>
     )
 }
