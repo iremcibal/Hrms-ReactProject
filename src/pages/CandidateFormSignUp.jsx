@@ -3,12 +3,12 @@ import { Form, Button, Image } from 'semantic-ui-react'
 import * as Yup from 'yup';
 import React from 'react'
 import { AuthService } from '../services/authService';
+import UserAddTextInput from '../utilities/customFormControls/UserAddTextInput';
 
 export default function CandidateFormSignUp() {
 
    // let candidateService = new CandidateService()
     let authService = new AuthService();
-
 
     return (
         <div className="container-form">
@@ -27,6 +27,7 @@ export default function CandidateFormSignUp() {
                         birthDate: '',
                         password: '',
                         repeat_password:'',
+                        active:'false',
                     }}
                     validationSchema={
                         Yup.object({
@@ -40,6 +41,7 @@ export default function CandidateFormSignUp() {
                                 .required('Lütfen bilgilerinizi eksiksiz giriniz.'),
                             nationaltyNo: Yup.string()
                                 .min(11, "Lütfen TC kimliğinizi yazınız.")
+                                .max(11, "Lütfen TC kimliğinizi yazınız.")
                                 .required('Lütfen bilgilerinizi eksiksiz giriniz.'),
                             birthDate: Yup.date()
                                 .required('Lütfen bilgilerinizi eksiksiz giriniz.'),
@@ -58,12 +60,16 @@ export default function CandidateFormSignUp() {
                             nationaltyNo: values.nationaltyNo,
                             birthDate: values.birthDate,
                             password: values.password,
-                            repeat_password: values.repeat_password,
                         }
                         /* await new Promise((r) => setTimeout(r, 500));
                         alert(JSON.stringify(values, null, 2)); */
                         console.log(newcandidate)
                         authService.addRegisterCandidate(newcandidate);
+
+                        
+                        //toast.error(`{values.error}`)
+                        
+
 
                     }}
 
@@ -71,103 +77,36 @@ export default function CandidateFormSignUp() {
 
                 >
                     {({
-                        values,
-                        touched,
-                        errors,
                         dirty,
                         isSubmitting,
                         handleSubmit,
-                        handleChange,
-
                     }) => (
                         <Form onSubmit={handleSubmit}>
-                            <label htmlFor="name">İsim</label>
-                            <Form.Input
-                                fluid
-                                id='name'
-                                type="text"
-                                value={values.name}
-                                onChange={handleChange}
-
-                            />
-                            {errors.name && touched.name && (
-                                <div className="input-feedback">{errors.name}</div>
-                            )}
-
-                            <label htmlFor="lastName">Soy İsim</label>
-                            <Form.Input
-                                fluid
-                                id='lastName'
-                                type="text"
-                                value={values.lastName}
-                                onChange={handleChange}
-                            />
-                            {errors.lastName && touched.lastName && (
-                                <div className="input-feedback">{errors.lastName}</div>
-                            )}
-
-                            <label htmlFor="email">Email</label>
-                            <Form.Input
-                                fluid
-                                id="email"
-                                type="text"
-                                value={values.email}
-                                onChange={handleChange}
-                            />
-                            {errors.email && touched.email && (
-                                <div className="input-feedback">{errors.email}</div>
-                            )}
-                            <label htmlFor="nationaltyNo">Kimlik Numarası</label>
-                            <Form.Input
-                                fluid
-                                id="nationaltyNo"
-                                type="text"
-
-                                value={values.nationaltyNo}
-                                onChange={handleChange}
-                            />
-                            {errors.nationaltyNo && touched.nationaltyNo && (
-                                <div className="input-feedback">{errors.nationaltyNo}</div>
-                            )}
-
-                            <label htmlFor="birthDate">Doğum Tarihi</label>
-                            <Form.Input
-                                fluid
-                                id="birthDate"
-                                value={values.birthDate}
-                                onChange={handleChange}
-                            />
-                            {errors.birthDate && touched.birthdate && (
-                                <div className="input-feedback">{errors.birthDate}</div>
-                            )}
-                            <label htmlFor="password">Şifre</label>
-                            <Form.Input
-                                type='password'
-                                id="password"
-                                value={values.password}
-                                onChange={handleChange}
-                            />
-                            {errors.password && touched.password && (
-                                <div className="input-feedback">{errors.password}</div>
-                            )}
-                            <label htmlFor="repeat_password">Şifre Tekrarı</label>
-                            <Form.Input
-                                type='password'
-                                id="repeat_password"
-                                value={values.repeat_password}
-                                onChange={handleChange}
-
-                            />
-                            {errors.repeat_password && touched.repeat_password && (
-                                <div className="input-feedback">{errors.repeat_password}</div>
-                            )}
+                            <label>İsim</label>
+                            <UserAddTextInput name="name"/>
 
 
-                            {/*  <Form.Checkbox
-                            label='I agree to the Terms and Conditions'
-                        /> */}
+                            <label>Soy İsim</label>
+                            <UserAddTextInput name="lastName"/>
+                            
 
-                            <Button disabled={!dirty || isSubmitting}
+                            <label>Email</label>
+                            <UserAddTextInput name="email"/>
+
+                            <label >Kimlik Numarası</label>
+                            <UserAddTextInput name="nationaltyNo"/>
+
+                            <label>Doğum Tarihi</label>
+                            <UserAddTextInput name="birthDate"/>
+
+                            <label>Şifre</label>
+                            <UserAddTextInput name="password" type="password"/>
+
+                            <label>Şifre Tekrarı</label>
+                            <UserAddTextInput name="repeat_password" type="password"/>
+
+                            <Button 
+                            disabled={!dirty || isSubmitting}
                             type="submit"
                             >Kayıt Ol</Button>
 
