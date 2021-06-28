@@ -7,15 +7,17 @@ import { CompanyService } from '../services/companyService'
 import { JobTypeService } from '../services/jobTypeService'
 import { JobTimeService } from '../services/jobTimeService'
 import { Header, Icon, Modal } from 'semantic-ui-react'
+
 import { useToast } from 'react-toastify'
+
 
 export default function JobPost() {
 
     let jobPostService = new JobPostService()
 
     const [open, setOpen] = React.useState(false)
-    const addToast = useToast();
 
+    const addToast = useToast();
 
     const [company, setCompany] = useState([])
     const [city, setCity] = useState([])
@@ -53,7 +55,27 @@ export default function JobPost() {
             positionQuota: "", createdAt: "", deadLine: "", maxSalary: "",
             minSalary: "", working: "", workingTime: "", active: ""
         },
-    
+
+        onSubmit: (values) => {
+            let jobPost = {
+                company: { id: 1 },
+                city: { id: values.cityId },
+                positionName: values.positionName,
+                positionTitle: values.positionTitle,
+                positionQuota: values.positionQuota,
+                createdAt: values.createdAt,
+                deadLine: values.deadLine,
+                maxSalary: values.maxSalary,
+                minSalary: values.minSalary,
+                working: { id: values.typeId },
+                workingTime: { id: values.timeId },
+                active: true,
+            }
+            alert("İlanınız sistem onayından sonra eklenecektir.")
+            console.log(jobPost);
+            jobPostService.postJobPost(jobPost);
+        }
+
     })
     const handleDropdownChange = (name, value) => formik.setFieldValue(name, value)
 
@@ -77,6 +99,7 @@ export default function JobPost() {
                         <Modal.Description>
                             <Formik
                                 initialValues={formik.initialValues}
+
                                 onSubmit= {(values) => {
                                     let jobPost = {
                                         company: { id: 1 },
@@ -99,6 +122,11 @@ export default function JobPost() {
                                 }}
                             >
                                 <Form onSubmit={formik.handleSubmit}>
+                                  
+                                onSubmit={formik.handleSubmit}
+                            >
+                                <Form>
+
                                     <Form.Input fluid label="Company" type="company" placeholder='Company' name="company"
 
                                         onChange={(event, data) => {
@@ -230,7 +258,9 @@ export default function JobPost() {
                         <Button basic color='red' inverted onClick={() => setOpen(false)}>
                             <Icon name='remove' /> Sil
                         </Button>
+
                         <Button type="submit" color='green' inverted >
+
                             <Icon name='checkmark' /> Yayınla
                         </Button>
                     </Modal.Actions>

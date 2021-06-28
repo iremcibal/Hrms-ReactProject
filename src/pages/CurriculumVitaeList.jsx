@@ -33,75 +33,83 @@ export default function CurriculumVitaeList() {
             {
                 console.log(candidates)
             }
-            <Card.Group>
-                {
-                    image.map((image)=> (
-                        <Card color='red' image={image?.imageUrl} />
-                    ))
-                }
-
-                
-                <Card className="cv">
-                    <Card.Content><Card.Header>{candidates.candidates?.name} {candidates.candidates?.lastName}</Card.Header> </Card.Content>
-                </Card>
-
-                <Card fluid>
-                    <Card.Header className="textbaslik">Education</Card.Header> {
-                        universities.map((universities) => (
-                            <Card.Content>
-                                <Card.Header>{universities?.university_name} ({universities?.education}) </Card.Header>
-                                <Card.Description>{universities?.division_name} ( {universities?.startAt}/{universities?.finishAt})</Card.Description>
-                            </Card.Content>
-                        ))
-                    }
-                </Card>
-
-
-
-                <Card fluid>
+            <Card fluid className="candidate-cv">
+                <Card.Group>
                     {
-                        jobExperiences.map((jobExperiences) => (
-                            <Card.Content>
-                                <Card.Header>{jobExperiences?.companyName}</Card.Header>
-                                <Card.Description>{jobExperiences?.positionName} ( {jobExperiences?.startAt}/{jobExperiences?.finishAt})</Card.Description>
-                            </Card.Content>
+                        image.map((image) => (
+                            <Card color='red' image={image?.imageUrl} />
                         ))
                     }
-                </Card>
 
-                <Card fluid>
-                    <Card.Content>
-                        <Card.Header>Skills</Card.Header>
-                        {technologies.map((technologies) => (
-                            <Card.Description>- {technologies?.technologyName} ({technologies?.level})</Card.Description>
 
-                        ))
-                        }</Card.Content>
-                </Card>
+                    <Card className="cv">
+                        <Card.Content><Card.Header>{candidates.candidates?.name} {candidates.candidates?.lastName}</Card.Header> </Card.Content>
+                    </Card>
 
-                <Card fluid>
-                    <Card.Content>
-                        <Card.Header>Languages</Card.Header>
-                        {
-                        foreignLanguages.map((foreignLanguages) => (
-                            <Card.Description>- {foreignLanguages?.language} ({foreignLanguages?.level})</Card.Description>
+                    <Card fluid>
+                        <Card.Content>
+                            <Card.Header>Eğitim</Card.Header>{
+                                universities.map((universities) => (
 
-                        ))
-                        }</Card.Content>
-                </Card>
+                                    <Card.Description>{universities?.university_name} ({universities?.education}) / {universities?.division_name}
+                                        ( {universities?.startAt}/{universities?.finishAt})</Card.Description>
 
-                <Card fluid>
-                    <Card.Header className="textbaslik">Education</Card.Header> {
-                        cvDetails.map((cvDetails) => (
-                            <Card.Content>
-                                <Card.Header>Github: {cvDetails?.gitHub} LinkedIn: {cvDetails?.linkedIn} </Card.Header>
-                                <Card.Description>{cvDetails?.frontNote} </Card.Description>
-                            </Card.Content>
-                        ))
-                    }
-                </Card>
+                                ))
+                            }
+                        </Card.Content>
+                    </Card>
 
-            </Card.Group>
+
+
+                    <Card fluid>
+                        <Card.Content>
+                            <Card.Header>Tecrübeler</Card.Header>
+                            {jobExperiences.map((jobExperiences) => (
+
+                                <Card.Description>{jobExperiences?.companyName} / {jobExperiences?.positionName}
+                                    ( {jobExperiences?.startAt}/{jobExperiences?.finishAt})</Card.Description>
+
+
+                            ))
+                            } </Card.Content>
+                    </Card>
+
+                    <Card fluid>
+                        <Card.Content>
+                            <Card.Header>Beceriler</Card.Header>
+                            {technologies.map((technologies) => (
+                                <Card.Description>- {technologies?.technologyName} ({technologies?.level})</Card.Description>
+
+                            ))
+                            }</Card.Content>
+                    </Card>
+
+                    <Card fluid>
+                        <Card.Content>
+                            <Card.Header>Yabancı Dil</Card.Header>
+                            {
+                                foreignLanguages.map((foreignLanguages) => (
+                                    <Card.Description>- {foreignLanguages?.language} ({foreignLanguages?.level})</Card.Description>
+
+                                ))
+                            }</Card.Content>
+                    </Card>
+
+                    <Card fluid>
+                        <Card.Content>
+                            <Card.Header>Ek Bilgiler</Card.Header> 
+                            {cvDetails.map((cvDetails) => (
+                                
+                                    <Card.Description>Github: {cvDetails?.gitHub} <br/> LinkedIn: {cvDetails?.linkedIn} <br/> [{cvDetails?.frontNote}] </Card.Description>
+                               
+                            ))
+                        } 
+                        </Card.Content>
+                    </Card>
+
+                </Card.Group>
+            </Card>
+
         </div >
     )
 }

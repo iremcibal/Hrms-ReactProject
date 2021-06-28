@@ -64,6 +64,7 @@ export default function DashBoard() {
                         <Route exact path="/navi/candidate/:id" component={CurriculumVitaeList}/>
                         <Route exact path="/navi/company/:companyName" component={JobPostCompanyList}/>
                         <Route exact path="/navi/newjobpost" component={NewJobPost}/>
+
                         
 
                     </Grid.Column>
