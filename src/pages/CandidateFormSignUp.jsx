@@ -3,7 +3,6 @@ import { Form, Button, Image } from 'semantic-ui-react'
 import * as Yup from 'yup';
 import React from 'react'
 import { AuthService } from '../services/authService';
-
 import UserAddTextInput from '../utilities/customFormControls/UserAddTextInput';
 
 
@@ -30,7 +29,6 @@ export default function CandidateFormSignUp() {
                         password: '',
                         repeat_password:'',
                         active:'false',
-
                     }}
                     validationSchema={
                         Yup.object({
@@ -67,9 +65,13 @@ export default function CandidateFormSignUp() {
                         /* await new Promise((r) => setTimeout(r, 500));
                         alert(JSON.stringify(values, null, 2)); */
                         console.log(newcandidate)
-                        authService.addRegisterCandidate(newcandidate);              
+
+                        authService.addRegisterCandidate(newcandidate);
+
+                        
                         //toast.error(`{values.error}`)
-  
+                     
+
                     }}
 
 
