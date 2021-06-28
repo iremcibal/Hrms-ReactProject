@@ -13,7 +13,6 @@ import CandidateFormSignUp from '../pages/CandidateFormSignUp'
 import FirstPage from '../pages/FirstPage'
 import Navi from './Navi'
 import CompanyFormSignUp from '../pages/CompanyFormSignUp'
-import JobPost from '../pages/JobPost'
 import Navbar from '../components/admin-panel/navbar/Navbar'
 import Sidebar from '../components/admin-panel/sidebar/Sidebar'
 import NewCandidate from '../components/admin-panel/enables/NewCandidate'
@@ -64,7 +63,7 @@ export default function DashBoard() {
                         <Route exact path="/navi/position" component={PositionList}/>
                         <Route exact path="/navi/candidate/:id" component={CurriculumVitaeList}/>
                         <Route exact path="/navi/company/:companyName" component={JobPostCompanyList}/>
-                        <Route exact path="/navi/newjobpost" component={JobPost}/>
+                        <Route exact path="/navi/newjobpost" component={NewJobPost}/>
                         
 
                     </Grid.Column>
