@@ -8,7 +8,7 @@ import UserAddTextInput from '../utilities/customFormControls/UserAddTextInput';
 
 export default function CandidateFormSignUp() {
 
-   // let candidateService = new CandidateService()
+  
     let authService = new AuthService();
 
     return (
