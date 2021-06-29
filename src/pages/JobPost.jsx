@@ -11,11 +11,15 @@ import { Button, Form,Header, Icon, Modal } from 'semantic-ui-react'
 import { useToast } from 'react-toastify'
 
 
+
+
 export default function JobPost() {
 
     let jobPostService = new JobPostService()
 
     const [open, setOpen] = React.useState(false)
+
+    const addToast = useToast();
 
     const [company, setCompany] = useState([])
     const [city, setCity] = useState([])
@@ -99,6 +103,7 @@ export default function JobPost() {
                         <Modal.Description>
                             <Formik
                                 initialValues={formik.initialValues}
+
 
                                 onSubmit={(values) => {
                                     let jobPost = {
