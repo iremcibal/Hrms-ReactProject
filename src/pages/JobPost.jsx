@@ -1,14 +1,16 @@
-import React, { useEffect, useState} from 'react'
-import { Formik, useFormik } from 'formik'
-import { Button, Form, } from 'semantic-ui-react'
-import JobPostService from '../services/jobPostService'
+import React, { useEffect, useState } from 'react'
+import { Formik, useFormik,Field } from 'formik'
+import { Select } from 'formik-semantic-ui-react'
+import {JobPostService} from '../services/jobPostService'
 import { CityService } from '../services/cityService'
 import { CompanyService } from '../services/companyService'
 import { JobTypeService } from '../services/jobTypeService'
 import { JobTimeService } from '../services/jobTimeService'
-import { Header, Icon, Modal } from 'semantic-ui-react'
+import { Button, Form,Header, Icon, Modal } from 'semantic-ui-react'
 
 import { useToast } from 'react-toastify'
+
+
 
 
 export default function JobPost() {
@@ -77,13 +79,15 @@ export default function JobPost() {
         }
 
     })
-    const handleDropdownChange = (name, value) => formik.setFieldValue(name, value)
+    const handleChangeSemantic = (value, fieldName) => {
+        formik.setFieldValue(fieldName, value);
+    }
 
 
     return (
         <div className="container-form2">
             <div className="magic-form">
-               { /*<div className="ilan">İş İlanı Ver </div>*/}
+                { /*<div className="ilan">İş İlanı Ver </div>*/}
                 <Modal
                     basic
                     onClose={() => setOpen(false)}
@@ -100,10 +104,11 @@ export default function JobPost() {
                             <Formik
                                 initialValues={formik.initialValues}
 
-                                onSubmit= {(values) => {
+
+                                onSubmit={(values) => {
                                     let jobPost = {
                                         company: { id: 1 },
-                                        city: { id: values.city_id },
+                                        city: { id: values.cityId },
                                         positionName: values.positionName,
                                         positionTitle: values.positionTitle,
                                         positionQuota: values.positionQuota,
@@ -111,42 +116,31 @@ export default function JobPost() {
                                         deadLine: values.deadLine,
                                         maxSalary: values.maxSalary,
                                         minSalary: values.minSalary,
-                                        working: { id: values.jobtype_id },
-                                        workingTime: { id: values.jobtime_id },
-                                        isActive:false,
+                                        working: { id: values.jobtypeId },
+                                        workingTime: { id: values.jobtimeId },
+                                        isActive: false,
                                     }
                                     console.log(jobPost);
-                                    jobPostService.postJobPost(jobPost).then((result) => {
-                                        addToast(result.data.message, {appearanca : result.data.success ? "success": "error", autoDismiss: true});
-                                    })
+                                    jobPostService.postJobPost(jobPost)
                                 }}
                             >
+
+
                                 <Form onSubmit={formik.handleSubmit}>
-                                  
-                                onSubmit={formik.handleSubmit}
-                            >
-                                <Form>
 
-                                    <Form.Input fluid label="Company" type="company" placeholder='Company' name="company"
 
-                                        onChange={(event, data) => {
-                                            handleDropdownChange("id", data.value)
+                                    <Field name="cityId"
+                                        as={Select}
+                                        id="cityId"
+                                        options={city}
+                                        onchange={(event, data) => {
+                                            handleChangeSemantic("cityId", data.value)
                                         }}
-                                        value={formik.values.id}
 
-                                    >
-                                        <select
-                                            id="company"
-                                        >
-                                            <option />
-                                            {
-                                                company.map((company) => (
-                                                    <option value="company" label={company?.companyName} />
-                                                ))
-                                            }
+                                    />
 
-                                        </select>
-                                    </Form.Input>
+
+
                                     <Form.Input fluid label="City" type="city" placeholder="City" name="city">
 
                                         <select
@@ -265,14 +259,6 @@ export default function JobPost() {
                         </Button>
                     </Modal.Actions>
                 </Modal>
-
-
-
-
-
-
-
-
 
 
 

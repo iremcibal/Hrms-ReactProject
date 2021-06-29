@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Checkbox, Table } from 'semantic-ui-react'
-import JobPostService from '../services/jobPostService';
+import {JobPostService} from '../services/jobPostService';
 
 
 export default function JobPostSortList() {

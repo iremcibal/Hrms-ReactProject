@@ -19,27 +19,12 @@ import NewCandidate from '../components/admin-panel/enables/NewCandidate'
 import NewCompany from '../components/admin-panel/enables/NewCompany'
 import NewJobPost from '../components/admin-panel/enables/NewJobPost'
 import Login from '../components/admin-panel/Login'
+import AddJobPost from '../pages/AddJobPost'
+import JobPost from '../pages/JobPost'
 
 export default function DashBoard() {
     return (
         <div>
-           {/* <Grid>
-                <Grid.Row>
-                    <Grid.Column width={4}>
-                        <Route exact path="/admin" component={Side}/>
-                        
-                    </Grid.Column>    
-                    <Grid.Column width={12}>
-                        <Route exact path="/admin" component={Navi}/>
-
-
-                    </Grid.Column>
-
-
-                </Grid.Row>
-
-
-           </Grid> */}
             <Grid>
                 <Grid.Row>
                     <Route path="/admin" component={Navbar} />
@@ -63,7 +48,9 @@ export default function DashBoard() {
                         <Route exact path="/navi/position" component={PositionList}/>
                         <Route exact path="/navi/candidate/:id" component={CurriculumVitaeList}/>
                         <Route exact path="/navi/company/:companyName" component={JobPostCompanyList}/>
-                        <Route exact path="/navi/newjobpost" component={NewJobPost}/>
+                        <Route exact path="/navi/newjobpost" component={AddJobPost}/>
+                        <Route exact path="/navi/newjobpost2" component={JobPost}/>
+
 
                         
 

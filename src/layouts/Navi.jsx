@@ -25,7 +25,7 @@ export default function Navi() {
                     </Menu.Item>
 
                     <Menu.Item name='home'>
-                        <Link>Menu</Link>
+                        Menu
                     </Menu.Item>
 
                     <Menu.Item>

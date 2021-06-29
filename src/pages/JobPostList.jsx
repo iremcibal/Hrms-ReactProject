@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import JobPostService from '../services/jobPostService';
+import {JobPostService} from '../services/jobPostService';
 import { Card, Divider,Grid ,Button} from 'semantic-ui-react'
 
 

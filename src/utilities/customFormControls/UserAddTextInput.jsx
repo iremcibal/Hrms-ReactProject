@@ -5,7 +5,7 @@ import { FormField } from 'semantic-ui-react'
 
 export default function UserAddTextInput({...props}) {
 
-    const[field,meta] = useField(props)
+    const[field,meta] = useField(props);
 
     
     return (
