@@ -28,7 +28,7 @@ export default function CandidateFormSignUp() {
                         birthDate: '',
                         password: '',
                         repeat_password:'',
-                        active:'false',
+                        //active:'false',
                     }}
                     validationSchema={
                         Yup.object({

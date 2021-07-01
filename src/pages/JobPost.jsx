@@ -3,12 +3,10 @@ import { Formik, useFormik,Field } from 'formik'
 import { Select } from 'formik-semantic-ui-react'
 import {JobPostService} from '../services/jobPostService'
 import { CityService } from '../services/cityService'
-import { CompanyService } from '../services/companyService'
 import { JobTypeService } from '../services/jobTypeService'
 import { JobTimeService } from '../services/jobTimeService'
 import { Button, Form,Header, Icon, Modal } from 'semantic-ui-react'
 
-import { useToast } from 'react-toastify'
 
 
 
@@ -19,20 +17,20 @@ export default function JobPost() {
 
     const [open, setOpen] = React.useState(false)
 
-    const addToast = useToast();
 
-    const [company, setCompany] = useState([])
+    //const [company, setCompany] = useState([])
+
     const [city, setCity] = useState([])
     const [jobType, setJobType] = useState([])
     const [jobTime, setJobTime] = useState([])
 
 
     useEffect(() => {
-        let companyService = new CompanyService()
-        companyService.getByCompanyList().then(result => {
+       // let companyService = new CompanyService()
+       /*  companyService.getByCompanyList().then(result => {
             setCompany(result.data.data);
             console.log(result)
-        })
+        }) */
         let cityService = new CityService()
         cityService.getCityList().then(result => {
             setCity(result.data.data);
@@ -71,7 +69,7 @@ export default function JobPost() {
                 minSalary: values.minSalary,
                 working: { id: values.typeId },
                 workingTime: { id: values.timeId },
-                active: true,
+               // active: true,
             }
             alert("İlanınız sistem onayından sonra eklenecektir.")
             console.log(jobPost);
@@ -118,7 +116,7 @@ export default function JobPost() {
                                         minSalary: values.minSalary,
                                         working: { id: values.jobtypeId },
                                         workingTime: { id: values.jobtimeId },
-                                        isActive: false,
+                                        //isActive: false,
                                     }
                                     console.log(jobPost);
                                     jobPostService.postJobPost(jobPost)

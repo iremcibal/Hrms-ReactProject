@@ -33,13 +33,17 @@ export default function JobPostList() {
                                             <Card.Header ><strong>Email</strong></Card.Header>
                                             <Card.Description >{jobPost.company?.email}</Card.Description><br />
                                             <Card.Header ><strong>Yayınlanma Tarihi</strong></Card.Header>
-                                            <Card.Description >{jobPost.createdAt}</Card.Description>
+                                            <Card.Description >{jobPost.createdAt}</Card.Description><br/>
+                                            <Card.Header > <strong>Son Başvuru Günü</strong></Card.Header>
+                                            <Card.Description >{jobPost.deadLine}</Card.Description> <br/>
                                         </Grid.Column>
 
 
                                         <Grid.Column>
-                                            <Card.Header > <strong>Son Başvuru Günü</strong></Card.Header>
-                                            <Card.Description >{jobPost.deadLine}</Card.Description> <br/>
+                                            <Card.Header ><strong>Çalışma Şekli</strong></Card.Header>
+                                            <Card.Description >{jobPost.jobType?.typeName}</Card.Description><br/>
+                                            <Card.Header ><strong>Çalışma Zamanı</strong></Card.Header>
+                                            <Card.Description >{jobPost.jobTime?.timeName}</Card.Description><br/>
                                             <Card.Header ><strong>Maaş Bilgisi</strong></Card.Header>
                                             <Card.Description>{jobPost.maxSalary} / {jobPost.minSalary}</Card.Description><br/>
                                             <Card.Header><strong>Pozisyon Kotası</strong></Card.Header>
