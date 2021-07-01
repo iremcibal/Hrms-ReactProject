@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
+
 import { Formik, Field, useFormik } from 'formik'
 import { Form, Select } from 'formik-semantic-ui-react'
 import { Button, Header, Modal, Icon } from 'semantic-ui-react'
 import * as Yup from 'yup';
 
-
 import { NewPostService } from '../services/newPostService'
 import JobPostTextInput from '../utilities/customFormControls/JobPostTextInput'
 import UserAddTextInput from '../utilities/customFormControls/UserAddTextInput'
-
 
 import { JobPostService } from '../services/jobPostService'
 import Swal from 'sweetalert2'
@@ -17,6 +16,7 @@ import { FormField } from 'semantic-ui-react'
 
 
 export default function AddJobPost() {
+
 
     let jobPostService = new JobPostService()
     const [open, setOpen] = React.useState(false)
@@ -42,6 +42,7 @@ export default function AddJobPost() {
         text: city.cityName,
         value: city.cityId
     }))
+
     const positions = position.map((positions) => ({
         key: positions.positionId,
         text: positions.positionName,
@@ -54,13 +55,16 @@ export default function AddJobPost() {
         value: type.jobtypeId
     }))
 
+
     const jobTime = jobTimes.map((time) => ({
         key: time.jobtimeId,
         text: time.timeName,
         value: time.jobtimeId
     }))
 
+
     const history = useHistory()
+
 
     const formik = useFormik({
         initialValues: {
@@ -76,11 +80,11 @@ export default function AddJobPost() {
             jobtimeId: "",
         },
 
-
     })
 
     const handleChangeValue = (fieldName,value ) => {
         formik.setFieldValue( fieldName,value);
+      
     }
 
 
@@ -239,6 +243,7 @@ export default function AddJobPost() {
 
 
             </Modal>
+
 
 
         </div>
