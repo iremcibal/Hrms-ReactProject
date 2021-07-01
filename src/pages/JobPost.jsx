@@ -9,13 +9,17 @@ import { Button, Form,Header, Icon, Modal } from 'semantic-ui-react'
 
 
 
+
+
 export default function JobPost() {
 
     let jobPostService = new JobPostService()
 
     const [open, setOpen] = React.useState(false)
 
+
     //const [company, setCompany] = useState([])
+
     const [city, setCity] = useState([])
     const [jobType, setJobType] = useState([])
     const [jobTime, setJobTime] = useState([])
@@ -97,6 +101,7 @@ export default function JobPost() {
                         <Modal.Description>
                             <Formik
                                 initialValues={formik.initialValues}
+
 
                                 onSubmit={(values) => {
                                     let jobPost = {

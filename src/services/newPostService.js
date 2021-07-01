@@ -1,7 +1,9 @@
 import axios from "axios"
 
 
+
 export class NewPostService{
+
 
     getByCompanyList(){
         return axios.get("http://localhost:8080/employers/getByCompanyList")

@@ -51,6 +51,7 @@ export default function DashBoard() {
                         <Route exact path="/navi/newjobpost" component={AddJobPost}/>
                         <Route exact path="/navi/newjobpost2" component={JobPost}/>
 
+
                         
 
                     </Grid.Column>
