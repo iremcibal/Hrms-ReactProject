@@ -26,7 +26,7 @@ export default function PositionList() {
                 <Table.Body>
                     {
                         positions.map(position => (
-                            <Table.Row key={position.id}>
+                            <Table.Row key={position.positionId}>
                                 <Table.Cell>{position.positionName}</Table.Cell>
                             </Table.Row>
 

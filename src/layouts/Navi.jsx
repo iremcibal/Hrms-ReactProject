@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Container, Menu } from 'semantic-ui-react'
 import {  Input, Image } from 'semantic-ui-react'
-import { Link } from "react-router-dom";
 import SignedIn from './SignedIn';
 import SignedOut from './SignedOut';
 
