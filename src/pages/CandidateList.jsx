@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Card, Image } from 'semantic-ui-react'
+import { Button, Card,} from 'semantic-ui-react'
 import { CandidateService } from '../services/candidateService'
 import { Link } from "react-router-dom";
 
@@ -28,12 +28,7 @@ export default function CandidateList() {
                 {candidates.map((candidate) => (
                     <Card fluid >
                         <Card.Content>
-                            <Image
-                                floated='right'
-                                size='mini'
-                                src='/images/avatar/large/steve.jpg'
-                            />
-                            <Card.Header> {candidate.name} {candidate.lastName} </Card.Header>
+                            <Card.Header textAlign="center"> {candidate.name} {candidate.lastName} </Card.Header>
                             <Card.Description> Bana buradan ulaşabilirsiniz: 
                                 <a href={"mailto:" + candidate.email}> {candidate.email}</a>
                             </Card.Description>

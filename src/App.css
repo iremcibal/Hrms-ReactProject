@@ -96,10 +96,11 @@
     display: flex;
     margin-top: 0.3em;
 }
+/*Login buton*/
 
-/*Login ekranı*/
-.ui.container.login{
-    margin: 10%;
+button.ui.large.fluid.button.login-button{
+    background-color: navy;
+    color: white;
 }
 
 /*Navi*/
@@ -130,4 +131,11 @@ button.ui.button.sp {
     display: block;
     margin: auto;
     margin-top: 5em;
+}
+
+
+/* FOOTER */
+
+.footer{
+    color:black;
 }

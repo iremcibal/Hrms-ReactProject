@@ -20,14 +20,11 @@ export default function Side() {
                 <Menu.Item
                     name='messages'
                 />
-                <Menu.Item
-                    name='messages'
-                />
                 
                 <Menu.Item as={NavLink} to={`/navi/candidate`}>Adaylar</Menu.Item>
                 <Menu.Item as={NavLink} to={`/navi/company`}>Şirketler</Menu.Item>
                 <Menu.Item as={NavLink} to={`/navi/jobpost`}>İş İlanları</Menu.Item>
-
+                <Menu.Item as={NavLink} to={`/navi/newjobpost`}>İlan Ver</Menu.Item>
             </Menu>
         </div>
     )

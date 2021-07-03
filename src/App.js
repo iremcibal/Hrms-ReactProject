@@ -2,8 +2,9 @@ import { Container } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
 import './App.css';
 
-import DashBoard from './layouts/DashBoard';
 
+import DashBoard from './layouts/DashBoard';
+import Footer from './layouts/Footer';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Container>
           <DashBoard/>
         </Container> 
+        <Footer/>
          
         
 

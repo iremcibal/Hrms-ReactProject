@@ -8,7 +8,7 @@ export default function JobPostList() {
 
     useEffect(() => {
         let jobPostService = new JobPostService()
-        jobPostService.getJobPostAll().then(result => {setjobPosts(result.data.data);
+        jobPostService.getJobPostStatusTrue().then(result => {setjobPosts(result.data.data);
         console.log(result)})
     }, [])
 

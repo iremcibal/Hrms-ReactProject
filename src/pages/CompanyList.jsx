@@ -1,5 +1,5 @@
 import React, { useEffect, useState} from 'react'
-import { Button, Card, Image } from 'semantic-ui-react'
+import { Button, Card, } from 'semantic-ui-react'
 import { CompanyService } from '../services/companyService'
 import { Link} from "react-router-dom";
 
@@ -22,11 +22,6 @@ export default function CompanyList() {
                 {companys.map((company) => (
                     <Card fluid key="company.id">
                         <Card.Content>
-                            <Image
-                                floated='right'
-                                size='mini'
-                                src='/images/avatar/large/steve.jpg'
-                            />
                             <Card.Header textAlign="center">{company.companyName}</Card.Header>
                             <Card.Meta></Card.Meta>
                             <Card.Description>Sitemiz :
