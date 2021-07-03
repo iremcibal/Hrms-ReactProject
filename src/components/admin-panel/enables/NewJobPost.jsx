@@ -1,54 +1,77 @@
 import React from 'react'
+import { useState } from 'react'
+import { useEffect } from 'react'
 import { Button, Checkbox, Icon, Table } from 'semantic-ui-react'
+import { JobPostService } from '../../../services/jobPostService'
+import Swal from 'sweetalert2'
 
 export default function NewJobPost() {
-    return (
-        <div className="new">
-            <Table celled compact definition>
-                <Table.Header fullWidth>
+
+    const [jobPosts, setJobPosts] = useState([])
+    let jobPostService = new JobPostService()
+    useEffect(() => {
+        jobPostService.getJobPostStatusFalse().then((result) => setJobPosts(result.data.data))
+    }, [])
+
+    const updateStatusTrue = (id) => {
+        jobPostService.updateStatusJobPost(id).then(
+            Swal.fire(
+                'Tebrikler',
+                'Sisteme Eklendi.',
+                'success'
+            ).then(function () {
+                window.location.reload();
+            })
+        );
+    }
+
+    const deleteJobPost = (jobPostId) => {
+        jobPostService.deleteJobPost(jobPostId).then(
+            Swal.fire(
+                'Tebrikler',
+                'Silindi.',
+                'success'
+            ).then(function () {
+                window.location.reload();
+            })
+        );
+    }
+
+return (
+    <div className="new">
+        <Table celled compact definition>
+            <Table.Header fullWidth>
+                <Table.Row>
+                    <Table.HeaderCell />
+                    <Table.HeaderCell>Şirket</Table.HeaderCell>
+                    <Table.HeaderCell>Pozisyon</Table.HeaderCell>
+                    <Table.HeaderCell>E-mail</Table.HeaderCell>
+                    <Table.HeaderCell>Çalışma Şekli</Table.HeaderCell>
+                    <Table.HeaderCell>Çalışma Süresi</Table.HeaderCell>
+                    <Table.HeaderCell></Table.HeaderCell>
+                </Table.Row>
+            </Table.Header>
+
+            <Table.Body>
+                {jobPosts.map((jobPost) => (
+                    <Table.Row key={jobPost.jobPostId}>
+                        <Table.Cell collapsing>
+                            <Checkbox slider onClick={(x) => updateStatusTrue(jobPost.jobPostId)} />
+                        </Table.Cell>
+                        <Table.Cell>{jobPost.company?.companyName}</Table.Cell>
+                        <Table.Cell>{jobPost.positions?.positionName}</Table.Cell>
+                        <Table.Cell>{jobPost.company?.email}</Table.Cell>
+                        <Table.Cell>{jobPost.jobType?.typeName}</Table.Cell >
+                        <Table.Cell>{jobPost.jobTime?.timeName}</Table.Cell>
+                        <Table.Cell><Button onClick={(x)=> deleteJobPost(jobPost.jobPostId)}>Sil</Button></Table.Cell>
+                    </Table.Row>
+                ))}
+            </Table.Body>
+
+            {/* <Table.Footer fullWidth>
                     <Table.Row>
                         <Table.HeaderCell />
-                        <Table.HeaderCell>Name</Table.HeaderCell>
-                        <Table.HeaderCell>Registration Date</Table.HeaderCell>
-                        <Table.HeaderCell>E-mail address</Table.HeaderCell>
-                        <Table.HeaderCell>Premium Plan</Table.HeaderCell>
-                    </Table.Row>
-                </Table.Header>
-
-                <Table.Body>
-                    <Table.Row>
-                        <Table.Cell collapsing>
-                            <Checkbox slider />
-                        </Table.Cell>
-                        <Table.Cell>John Lilki</Table.Cell>
-                        <Table.Cell>September 14, 2013</Table.Cell>
-                        <Table.Cell>jhlilk22@yahoo.com</Table.Cell>
-                        <Table.Cell>No</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell collapsing>
-                            <Checkbox slider />
-                        </Table.Cell>
-                        <Table.Cell>Jamie Harington</Table.Cell>
-                        <Table.Cell>January 11, 2014</Table.Cell>
-                        <Table.Cell>jamieharingonton@yahoo.com</Table.Cell>
-                        <Table.Cell>Yes</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell collapsing>
-                            <Checkbox slider />
-                        </Table.Cell>
-                        <Table.Cell>Jill Lewis</Table.Cell>
-                        <Table.Cell>May 11, 2014</Table.Cell>
-                        <Table.Cell>jilsewris22@yahoo.com</Table.Cell>
-                        <Table.Cell>Yes</Table.Cell>
-                    </Table.Row>
-                </Table.Body>
-
-                <Table.Footer fullWidth>
-                    <Table.Row>
-                        <Table.HeaderCell />
-                        <Table.HeaderCell colSpan='4'>
+                        <Table.HeaderCell colSpan='5'>
                             <Button
                                 floated='right'
                                 icon
@@ -56,16 +79,12 @@ export default function NewJobPost() {
                                 primary
                                 size='small'
                             >
-                                <Icon name='user' /> Add User
-                            </Button>
-                            <Button size='small'>Approve</Button>
-                            <Button disabled size='small'>
-                                Approve All
+                                <Icon name='building' /> Ekle 
                             </Button>
                         </Table.HeaderCell>
                     </Table.Row>
-                </Table.Footer>
-            </Table>
-        </div>
-    )
+                </Table.Footer> */}
+        </Table>
+    </div>
+)
 }

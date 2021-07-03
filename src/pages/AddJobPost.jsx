@@ -7,12 +7,10 @@ import * as Yup from 'yup';
 
 import { NewPostService } from '../services/newPostService'
 import JobPostTextInput from '../utilities/customFormControls/JobPostTextInput'
-import UserAddTextInput from '../utilities/customFormControls/UserAddTextInput'
 
 import { JobPostService } from '../services/jobPostService'
 import Swal from 'sweetalert2'
 import { useHistory } from 'react-router-dom'
-import { FormField } from 'semantic-ui-react'
 
 
 export default function AddJobPost() {
@@ -133,6 +131,7 @@ export default function AddJobPost() {
                                     jobType: { jobtypeId: values.jobtypeId },
                                     jobTime: { jobtimeId: values.jobtimeId },
                                     active: true,
+                                    status:false,
                                 }
                                 console.log(newJobPost)
                                 jobPostService.postJobPost(newJobPost);
