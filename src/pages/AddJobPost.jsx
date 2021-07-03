@@ -8,6 +8,7 @@ import * as Yup from 'yup';
 import { NewPostService } from '../services/newPostService'
 import JobPostTextInput from '../utilities/customFormControls/JobPostTextInput'
 
+
 import { JobPostService } from '../services/jobPostService'
 import Swal from 'sweetalert2'
 import { useHistory } from 'react-router-dom'
@@ -132,6 +133,7 @@ export default function AddJobPost() {
                                     jobTime: { jobtimeId: values.jobtimeId },
                                     active: true,
                                     status:false,
+
                                 }
                                 console.log(newJobPost)
                                 jobPostService.postJobPost(newJobPost);
