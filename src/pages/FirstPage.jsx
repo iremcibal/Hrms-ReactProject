@@ -1,44 +1,46 @@
 import React from 'react'
-import { Button, Divider, Form, Grid, Segment,Container } from 'semantic-ui-react'
-import { Link} from "react-router-dom";
+import { Button, Header,Image,Message , Form, Grid, Segment, Container } from 'semantic-ui-react'
+import { Link } from "react-router-dom";
 
 
-export default function FirstPage({signIn}) {
+export default function FirstPage({ signIn }) {
     return (
-        <Container className="login">
+        <Container>
             <div >
-                <Segment placeholder>
-                    <Grid columns={2} relaxed='very' stackable>
-                        <Grid.Column>
-                            <Form>
+                <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+                    <Grid.Column style={{ maxWidth: 450 }}>
+                        <Header as='h2' style={{color:'navy'}} textAlign='center'>
+                            <Image src='https://res.cloudinary.com/stanbul/image/upload/v1623720681/d42c91fa05a63047ab0a2109a10786d7_pohb7u.png' /> 
+                            Hesabınıza Giriş Yapın
+                        </Header>
+                        <Form size='large'>
+                            <Segment stacked>
+                                <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail' />
                                 <Form.Input
-                                    icon='user'
-                                    iconPosition='left'
-                                    label='Username'
-                                    placeholder='Username'
-                                />
-                                <Form.Input
+                                    fluid
                                     icon='lock'
                                     iconPosition='left'
-                                    label='Password'
+                                    placeholder='Şifre'
                                     type='password'
                                 />
 
-                                <Link to={`/navi`}><Button onClick={signIn} content='Login' primary></Button> </Link>
-                            </Form>
-                        </Grid.Column>
-
-                        <Grid.Column verticalAlign='middle'>
-                            <Link to={`/company`}><Button content='Sign up for Company' icon='building' size='big' /></Link>
-                            
-                            <Link to={`/individual`}><Button content='Sign up for Individual' icon='users' size='big'/></Link>
-                               
-                        </Grid.Column>
-                    </Grid>
-
-                    <Divider vertical>Or</Divider>
-                </Segment>
-
+                                <Link to={`/navi`}>
+                                    <Button 
+                                    onClick={signIn} className="login-button"
+                                    fluid size='large' content='Login' 
+                                    >
+                                    </Button> 
+                                </Link>
+                            </Segment>
+                        </Form>
+                        <Message>
+                            <Link to={`/individual`}><a href='#'>Bireysel Kayıt Ol   /   </a></Link>
+                            <Link to={`/company`}><a href='#'>Şirket İçin Kayıt Ol</a></Link>
+                        </Message>
+                    </Grid.Column>
+                </Grid>
+                     
+               
             </div>
         </Container>
 
