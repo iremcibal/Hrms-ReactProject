@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 export default function FirstPage({ signIn }) {
     return (
         <Container>
-            <div >
                 <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
                     <Grid.Column style={{ maxWidth: 450 }}>
                         <Header as='h2' style={{color:'navy'}} textAlign='center'>
@@ -39,9 +38,6 @@ export default function FirstPage({ signIn }) {
                         </Message>
                     </Grid.Column>
                 </Grid>
-                     
-               
-            </div>
         </Container>
 
     )

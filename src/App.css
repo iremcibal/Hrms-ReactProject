@@ -19,7 +19,7 @@
 }
 
 .ui.menu:not(.vertical) .item {
-    padding: 0.65em;
+    padding: 0.45em;
 }
 .profil{
     margin: auto;
@@ -101,6 +101,25 @@
 button.ui.large.fluid.button.login-button{
     background-color: navy;
     color: white;
+}
+
+/*Başvur butonu*/
+button.ui.button.login-button{
+    background-color: navy;
+    color: white;
+}
+/*favori butonu*/
+button.ui.button.favorite-button{
+    background-color:#42a3ce;
+    color: white;
+}
+/*favorite redux navi*/
+.ui.menu .item>.label{
+    background-color: navy;
+    color: white;
+}
+i.heart.icon.f-navi {
+    color: navy;
 }
 
 /*Navi*/
