@@ -1,17 +1,20 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux';
 import { Container, Menu } from 'semantic-ui-react'
-import {  Input, Image } from 'semantic-ui-react'
+import { Input, Image, Icon, Label } from 'semantic-ui-react'
+import Favorite from './Favorite';
 import SignedIn from './SignedIn';
 import SignedOut from './SignedOut';
 
 export default function Navi() {
-    
+    const { favoriteItems } = useSelector(state => state.favorite)
+    console.log(favoriteItems)
     const [isAuthenticated, setIsAuthenticated] = useState(true)
 
-    function handleSignOut(){
+    function handleSignOut() {
         setIsAuthenticated(false)
     }
-    function handleSignIn(){
+    function handleSignIn() {
         setIsAuthenticated(true)
     }
 
@@ -31,9 +34,21 @@ export default function Navi() {
                         <Input className='icon' icon='search' placeholder='Search...' />
                     </Menu.Item>
 
+
                     <Menu.Menu position='right'>
-                        {isAuthenticated?<SignedIn signOut={handleSignOut}/>
-                        :<SignedOut signIn={handleSignIn}/>}
+                        
+                        <Menu.Item>
+                            <Icon name='heart' className="f-navi" /> Favorilerim
+                            <Label className="favorite-label">
+                                {favoriteItems.length}
+                            </Label>
+                        </Menu.Item>
+
+                        <Menu.Item>
+                            {isAuthenticated ? <SignedIn signOut={handleSignOut} />
+                                : <SignedOut signIn={handleSignIn} />}
+
+                        </Menu.Item>
 
                     </Menu.Menu>
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { Button, Checkbox, Icon, Table } from 'semantic-ui-react'
+import { Button, Checkbox,Table } from 'semantic-ui-react'
 import { JobPostService } from '../../../services/jobPostService'
 import Swal from 'sweetalert2'
 

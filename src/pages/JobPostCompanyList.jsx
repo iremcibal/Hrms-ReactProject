@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {JobPostService} from '../services/jobPostService'
 import { useParams } from 'react-router-dom'
-import { Card, Divider,Grid ,Button} from 'semantic-ui-react'
+import { Card, Divider,Grid ,Button,Icon} from 'semantic-ui-react'
 
 
 export default function JobPostCompanyList() {
@@ -56,7 +56,11 @@ export default function JobPostCompanyList() {
                                             <Card.Header ><strong>Ek Bilgi</strong></Card.Header>
                                             <Card.Description >{jobPost.positionTitle}</Card.Description> <br/>
 
-                                            <Button basic color="blue">Başvur </Button>
+                                            <Button className="login-button">Başvur </Button>
+                                            <Button className="favorite-button">
+                                                <Icon name='heart' />
+                                                Favorilere Ekle
+                                            </Button>
                                         </Grid.Column>
 
                                         
