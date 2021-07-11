@@ -3,6 +3,7 @@ import { JobPostService } from '../services/jobPostService';
 import { Card, Divider, Grid, Button,Icon } from 'semantic-ui-react'
 import { addToFavorite } from '../store/actions/favoriteActions';
 import { useDispatch } from "react-redux";
+
 import { FavoriteService } from '../services/favoriteService';
 
 export default function JobPostList() {
@@ -10,7 +11,6 @@ export default function JobPostList() {
     
     useEffect(() => {
         let jobPostService = new JobPostService()
-        
         jobPostService.getJobPostStatusTrue().then(result => {
             setjobPosts(result.data.data);
             console.log(result)
@@ -18,13 +18,14 @@ export default function JobPostList() {
     }, [])
 
     const dispatch = useDispatch();
-
+  
     const handleAddToFavorite= (jobPosts) =>{
         dispatch(addToFavorite(jobPosts));
         let favoriteService = new FavoriteService();
         let favorite = {job: {id: jobPosts.jobPostId},candidates: {id:1}}
         favoriteService.addFavorite(favorite);
     }
+
 
 
     return (
@@ -71,6 +72,7 @@ export default function JobPostList() {
                                         
                                             <Button className="favorite-button"
                                                 onClick={()=> handleAddToFavorite(jobPosts)}
+
                                             >
                                                 <Icon name='heart' />
                                                 Favorilere Ekle
