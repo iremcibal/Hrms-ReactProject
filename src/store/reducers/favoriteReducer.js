@@ -1,27 +1,28 @@
-import { ADD_TO_FAVORİTE, REMOVE_FROM_FAVORİTE } from '../actions/favoriteActions'
+
+import { ADD_TO_FAVORITE, REMOVE_FROM_FAVORITE } from '../actions/favoriteActions'
 import { favoriteItems } from '../initialValues/favoriteItems'
 
 const initialState = { favoriteItems: favoriteItems };
 
 export default function favoriteReducer(state = initialState, { type, payload }) {
     switch (type) {
-        case ADD_TO_FAVORİTE:
-            let jobPost = state.favoriteItems.find(c => c.jobPost.id === payload.id)
+        case ADD_TO_FAVORITE:
+            let jobPost = state.favoriteItems.find(c => c.jobPost.jobPostId === payload.jobPostId)
             if(jobPost) {
                 return {
                     ...state,
-                    favoriteItems: state.favoriteItems.filter(c => c.jobPost.id !== payload.id)
+                    favoriteItems: state.favoriteItems.filter(c => c.jobPost.jobPostId !== payload.jobPostId)
                 }
             }else {
                 return {
                     ...state,
-                    favoriteItems: [...state.favoriteItems, {quantity:1,jobPost: payload}]
+                    favoriteItems: [...state.favoriteItems, {jobPost: payload}]
                 }
             }
-        case REMOVE_FROM_FAVORİTE:
+        case REMOVE_FROM_FAVORITE:
             return {
                 ...state,
-                favoriteItems: state.favoriteItems.filter(c => c.jobPost.id !== payload.id)
+                favoriteItems: state.favoriteItems.filter(c => c.jobPost.jobPostId !== payload.jobPostId)
             }
         default:
             return state;

@@ -20,7 +20,6 @@ import NewCompany from '../components/admin-panel/enables/NewCompany'
 import NewJobPost from '../components/admin-panel/enables/NewJobPost'
 import Login from '../components/admin-panel/Login'
 import AddJobPost from '../pages/AddJobPost'
-import JobPost from '../pages/JobPost'
 
 export default function DashBoard() {
     return (
@@ -49,7 +48,6 @@ export default function DashBoard() {
                         <Route exact path="/navi/candidate/:id" component={CurriculumVitaeList}/>
                         <Route exact path="/navi/company/:companyName" component={JobPostCompanyList}/>
                         <Route exact path="/navi/newjobpost" component={AddJobPost}/>
-                        <Route exact path="/navi/newjobpost2" component={JobPost}/>
 
 
                         

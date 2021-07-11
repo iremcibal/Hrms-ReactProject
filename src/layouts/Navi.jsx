@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import { Container, Menu } from 'semantic-ui-react'
 import { Input, Image, Icon, Label } from 'semantic-ui-react'
-import Favorite from './Favorite';
+
 import SignedIn from './SignedIn';
 import SignedOut from './SignedOut';
 

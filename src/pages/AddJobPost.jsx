@@ -142,7 +142,7 @@ export default function AddJobPost() {
                                     'Sistem onayından sonra eklenecektir.',
                                     'success'
                                 ) 
-                                history.push("/admin/enableNewJobPost")
+                                //history.push("/admin/enableNewJobPost")
 
                             }}
 
