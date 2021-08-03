@@ -6,6 +6,9 @@
     margin-top: 1.5em;
     padding: 3em;
 }
+.ui.cards.candidate-cv {
+    margin-top: 0.80em;
+}
 .ui.red.card{
     width: 10rem;
 }
@@ -157,4 +160,23 @@ button.ui.button.sp {
 
 .footer{
     color:black;
+}
+
+
+/*Candidate cv ekleme*/
+.ui.fluid.card.cv-add{
+    margin-top: 1.5em;
+    padding: 3em;
+    width: 98%;
+}
+
+button.ui.button.cv-add-button{
+    background-color: navy;
+    color: white;
+}
+
+/*update sayfası*/
+table.ui.table.cv-add {
+    margin-top: 1.5em;
+    width: 98%;
 }

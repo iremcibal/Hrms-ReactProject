@@ -8,8 +8,8 @@ export class JobExperienceService{
     getAllsortedList(){
         return axios.get("http://localhost:8080/jobexperience/getAllsortedList")
     }
-    postJobExperience(){
-        return axios.post("http://localhost:8080/jobexperience/save")
+    postJobExperience(newjobexperience){
+        return axios.post("http://localhost:8080/jobexperience/save",newjobexperience)
     }
     deleteJobExperience(experiencesId){
         return axios.delete("http://localhost:8080/jobexperience/delete?experiencesId="+experiencesId)

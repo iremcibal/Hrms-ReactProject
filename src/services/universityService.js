@@ -8,10 +8,13 @@ export class UniversityService{
     getSortedUniversity(){
         return axios.get("http://localhost:8080/university/getAllsortedList")
     }
-    postUniversity(){
-        return axios.post("http://localhost:8080/university/save")
+    postUniversity(neweducation){
+        return axios.post("http://localhost:8080/university/save",neweducation)
     }
-    deleteUniversity(){
-        return axios.delete("http://localhost:8080/university/delete")
+    deleteUniversity(universityId){
+        return axios.delete("http://localhost:8080/university/delete",universityId)
+    }
+    updateUniversity(updateeducation){
+        return axios.get("http://localhost:8080/university/updateUniversity",updateeducation)
     }
 }

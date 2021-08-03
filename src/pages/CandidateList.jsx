@@ -11,7 +11,7 @@ export default function CandidateList() {
 
     useEffect(() => {
         let candidateService = new CandidateService()
-        candidateService.getByCandidateList().then(result => setCandidates(result.data.data))
+        candidateService.getByCandidateStatusTrueList().then(result => setCandidates(result.data.data))
     }, [])
 /* 
     useEffect(() => {

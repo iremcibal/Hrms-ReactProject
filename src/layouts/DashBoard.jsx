@@ -20,6 +20,13 @@ import NewCompany from '../components/admin-panel/enables/NewCompany'
 import NewJobPost from '../components/admin-panel/enables/NewJobPost'
 import Login from '../components/admin-panel/Login'
 import AddJobPost from '../pages/AddJobPost'
+import AboutForMe from '../pages/AboutForMe'
+import AddUniversity from '../pages/University/AddUniversity'
+import UpdateUniversity from '../pages/University/UpdateUniversity'
+import AddJobExperiences from '../pages/JobExperiences/AddJobExperiences'
+import AddTechnology from '../pages/Technology/AddTechnology'
+import AddLanguage from '../pages/ForeignLanguages/AddLanguage'
+import AddCvDetail from '../pages/CvDetails/AddCvDetail'
 
 export default function DashBoard() {
     return (
@@ -48,9 +55,13 @@ export default function DashBoard() {
                         <Route exact path="/navi/candidate/:id" component={CurriculumVitaeList}/>
                         <Route exact path="/navi/company/:companyName" component={JobPostCompanyList}/>
                         <Route exact path="/navi/newjobpost" component={AddJobPost}/>
-
-
-                        
+                        <Route exact path="/navi/aboutme" component={AboutForMe}/>
+                        <Route exact path="/navi/aboutme/newuniversity" component={AddUniversity}/>
+                        <Route exact path="/navi/aboutme/:universityId" component={UpdateUniversity}/>
+                        <Route exact path="/navi/aboutme/newjobexperiences" component={AddJobExperiences}/>
+                        <Route exact path="/navi/aboutme/newtechnology" component={AddTechnology}/>
+                        <Route exact path="/navi/aboutme/newlanguage" component={AddLanguage}/>
+                        <Route exact path="/navi/aboutme/newcvdetail" component={AddCvDetail}/>                        
 
                     </Grid.Column>
                 </Grid.Row>

@@ -51,8 +51,8 @@ export default function CurriculumVitaeList() {
                             <Card.Header>Eğitim</Card.Header>{
                                 universities.map((universities) => (
 
-                                    <Card.Description>{universities?.university_name} ({universities?.education}) / {universities?.division_name}
-                                        ( {universities?.startAt}/{universities?.finishAt})</Card.Description>
+                                    <Card.Description>- {universities?.university_name} ({universities?.education}) / {universities?.division_name}
+                                        ( {universities?.startAt}/{universities?.finishAt}) <br/></Card.Description>
 
                                 ))
                             }
